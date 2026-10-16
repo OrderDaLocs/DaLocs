@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dalocs – One bite. Pure delight.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1253ad;        /* main pubmat blue */
+    --blue-deep: #0a1a8c;   /* navy accents */
+    --sky: #86d4ff;         /* section pills / price bursts */
+    --mist: #bccde6;        /* soft panels */
+    --cream: #fffdf0;       /* logo cream */
+    --ink: #1f4a5a;         /* cookie-name text */
+    --error: #b3261e;
+    --radius: 22px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Nunito", system-ui, sans-serif;
+    background: var(--blue);
+    color: var(--cream);
+    line-height: 1.5;
+  }
+  h1, h2, h3, .display { font-family: "Fredoka", "Nunito", sans-serif; }
+  :focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+  .wrap { width: min(1080px, 92%); margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  header { padding: 28px 0 8px; }
+  .head-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    gap: 16px;
+  }
+  .menu-panel {
+    background: var(--mist);
+    border-radius: 0 0 var(--radius) 0;
+    padding: 18px 24px 6px;
+    margin-left: calc((100vw - min(1080px, 92vw)) / -2);
+    padding-left: calc((100vw - min(1080px, 92vw)) / 2 + 24px);
+    border-top-left-radius: 0;
+    align-self: stretch;
+    display: flex; align-items: flex-end;
+  }
+  .menu-panel h1 {
+    font-size: clamp(3.2rem, 9vw, 6.5rem);
+    line-height: .85;
+    letter-spacing: -.02em;
+    color: #fff;
+    font-weight: 700;
+  }
+  .menu-panel h1 span { color: var(--blue-deep); }
+  .brand { text-align: center; }
+  .brand .logo {
+    display: inline-block;
+    background: var(--cream);
+    color: var(--blue-deep);
+    font-family: "Fredoka", sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: .04em;
+    padding: 18px 40px;
+    border-radius: 60% 40% 55% 45% / 55% 50% 50% 45%;
+  }
+  .brand p { margin-top: 10px; font-size: .85rem; letter-spacing: .06em; }
+  .mascot-slot {
+    justify-self: end;
+    width: min(180px, 100%);
+    aspect-ratio: 1;
+    background: var(--mist);
+    border-radius: var(--radius);
+    color: var(--blue-deep);
+    font-size: .75rem; font-weight: 700; text-align: center;
+    display: grid; place-items: center; padding: 10px;
+  }
+
+  /* ---------- Promo + info ---------- */
+  .promo {
+    margin: 28px 0 8px;
+    background: var(--mist);
+    color: var(--blue-deep);
+    border-radius: var(--radius);
+    padding: 22px 28px;
+    text-align: center;
+  }
+  .promo h2 { font-size: clamp(1.4rem, 3.4vw, 2rem); }
+  .promo p { color: var(--blue); font-size: 1.1rem; }
+
+  /* ---------- Menu sections ---------- */
+  .category {
+    display: inline-block;
+    margin: 40px 0 22px;
+    background: var(--sky);
+    color: #fff;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 700;
+    padding: 6px 48px 6px 26px;
+    border-radius: 0 999px 999px 0;
+    margin-left: calc((100vw - min(1080px, 92vw)) / -2);
+    padding-left: calc((100vw - min(1080px, 92vw)) / 2 + 26px);
+    text-shadow: 0 1px 0 rgba(10,26,140,.25);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 26px;
+  }
+  .cookie { position: relative; text-align: center; }
+  .img-slot {
+    position: relative;
+    aspect-ratio: 1;
+    border: 3px dashed var(--sky);
+    border-radius: 50%;
+    background: rgba(134, 212, 255, .12);
+    display: grid; place-items: center;
+    text-align: center;
+    padding: 18px;
+    color: var(--sky);
+    font-weight: 700;
+    font-size: .85rem;
+    overflow: hidden;
+  }
+  .img-slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .img-slot small { display: block; font-weight: 600; color: var(--cream); opacity: .85; margin-top: 4px; }
+  .price {
+    position: absolute; top: -6px; right: 4px;
+    width: 76px; height: 76px;
+    display: grid; place-items: center;
+    background: var(--sky);
+    color: #fff;
+    font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 1.15rem;
+    clip-path: polygon(50% 0, 62% 14%, 80% 10%, 82% 28%, 100% 38%, 88% 54%, 96% 72%, 78% 78%, 70% 96%, 52% 88%, 34% 100%, 28% 82%, 8% 78%, 14% 60%, 0 44%, 16% 32%, 18% 12%, 38% 14%);
+    text-shadow: 0 1px 0 rgba(10,26,140,.3);
+    z-index: 2;
+  }
+  .name-tag {
+    background: #fff;
+    color: var(--ink);
+    border-radius: 18px;
+    padding: 8px 12px 10px;
+    margin: -22px auto 12px;
+    width: 86%;
+    position: relative; z-index: 2;
+  }
+  .name-tag h3 { font-size: 1.3rem; line-height: 1.15; }
+  .name-tag span { display: block; font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; }
+
+  .qty {
+    display: inline-flex; align-items: center;
+    background: var(--cream); border-radius: 999px; overflow: hidden;
+  }
+  .qty button {
+    width: 42px; height: 42px; border: 0; cursor: pointer;
+    background: transparent; color: var(--blue-deep);
+    font-family: "Fredoka", sans-serif; font-size: 1.5rem; font-weight: 700;
+  }
+  .qty button:hover { background: var(--sky); }
+  .qty output {
+    min-width: 40px; text-align: center;
+    color: var(--blue-deep); font-weight: 700; font-size: 1.1rem;
+  }
+
+  /* ---------- Order form ---------- */
+  .order {
+    margin: 56px 0 40px;
+    background: var(--cream);
+    color: var(--ink);
+    border-radius: 30px;
+    padding: clamp(22px, 4vw, 44px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(22px, 4vw, 44px);
+  }
+  .order h2 { color: var(--blue-deep); font-size: 2rem; margin-bottom: 14px; grid-column: 1 / -1; }
+  .field { margin-bottom: 16px; }
+  label { display: block; font-weight: 700; margin-bottom: 4px; }
+  input[type="text"], input[type="tel"], textarea {
+    width: 100%;
+    font: inherit; color: var(--ink);
+    padding: 12px 14px;
+    border: 2px solid var(--mist);
+    border-radius: 14px;
+    background: #fff;
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px var(--sky); }
+  textarea { min-height: 96px; resize: vertical; }
+  .hint { font-size: .85rem; opacity: .8; }
+
+  .summary { background: var(--mist); border-radius: 20px; padding: 22px; align-self: start; color: var(--blue-deep); }
+  .summary h3 { font-size: 1.4rem; margin-bottom: 10px; }
+  .summary ul { list-style: none; min-height: 28px; }
+  .summary li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px dashed rgba(10,26,140,.3); }
+  .summary .empty { opacity: .75; border: 0; }
+  .totals { margin-top: 14px; }
+  .totals div { display: flex; justify-content: space-between; padding: 3px 0; }
+  .totals .discount { color: #0b6b3a; font-weight: 700; }
+  .totals .grand { font-family: "Fredoka", sans-serif; font-size: 1.5rem; border-top: 2px solid var(--blue-deep); margin-top: 8px; padding-top: 8px; }
+  .note { margin-top: 12px; font-size: .88rem; }
+  .submit {
+    margin-top: 18px; width: 100%;
+    border: 0; cursor: pointer;
+    background: var(--blue-deep); color: #fff;
+    font-family: "Fredoka", sans-serif; font-size: 1.25rem; font-weight: 600;
+    padding: 14px; border-radius: 999px;
+  }
+  .submit:hover { background: var(--blue); }
+  #error { color: var(--error); font-weight: 700; margin-top: 10px; min-height: 1.4em; }
+
+  /* ---------- Footer info ---------- */
+  .info {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 24px; text-align: center; padding: 30px 0 50px;
+  }
+  .info h3 { font-size: .95rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sky); margin-bottom: 4px; }
+  .info p { font-size: 1.05rem; }
+  .info small { display: block; opacity: .85; }
+
+  @media (max-width: 760px) {
+    .head-grid { grid-template-columns: 1fr; justify-items: center; }
+    .menu-panel { margin: 0; padding: 14px 24px 4px; border-radius: var(--radius); width: 100%; justify-content: center; }
+    .mascot-slot { justify-self: center; width: 120px; }
+    .order { grid-template-columns: 1fr; }
+    .category { margin-left: -4vw; padding-left: calc(4vw + 22px); }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap head-grid">
+    <div class="menu-panel"><h1>ME<span>N</span>U</h1></div>
+    <div class="brand">
+      <div class="logo">DALOCS</div>
+      <p>ONE BITE. PURE DELIGHT.</p>
+    </div>
+    <!-- Optional: replace with your cookie mascot image -->
+    <div class="mascot-slot">MASCOT IMAGE SLOT<br>(optional)</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="promo">
+    <h2>Buy 4 cookies &amp; save ₱10!</h2>
+    <p>Mix any flavors. Every 4 cookies in your order takes ₱10 off.</p>
+  </div>
+
+  <!-- ===== SIGNATURE COOKIES ===== -->
+  <h2 class="category">SIGNATURE COOKIES</h2>
+  <div class="grid">
+    <article class="cookie" data-name="OG Classic" data-price="50">
+      <div class="img-slot"><img src="Ogclassic.PNG" alt="OG Classic cookie"> 
+        <span>📷 IMAGE SLOT<small>Photo of OG Classic cookie goes here</small></span></div>
+      <div class="price">₱50</div>
+      <div class="name-tag"><h3>OG Classic</h3><span>Choco chip</span></div>
+      <div class="qty"><button type="button" aria-label="Remove one OG Classic">−</button><output>0</output><button type="button" aria-label="Add one OG Classic">+</button></div>
+    </article>
+
+    <article class="cookie" data-name="Dark Knight" data-price="55">
+      <div class="img-slot"><img src="DarkKnight.PNG" alt="Dark Knight cookie">
+        <span>📷 IMAGE SLOT<small>Photo of Dark Knight cookie goes here</small></span></div>
+      <div class="price">₱55</div>
+      <div class="name-tag"><h3>Dark Knight</h3><span>Dark choco</span></div>
+      <div class="qty"><button type="button" aria-label="Remove one Dark Knight">−</button><output>0</output><button type="button" aria-label="Add one Dark Knight">+</button></div>
+    </article>
+
+    <article class="cookie" data-name="Double Trouble" data-price="65">
+      <div class="img-slot"><img src="DoubleTrouble.PNG" alt="Double Trouble cookie"> -->
+        <span>📷 IMAGE SLOT<small>Photo of Double Trouble cookie goes here</small></span></div>
+      <div class="price">₱65</div>
+      <div class="name-tag"><h3>Double Trouble</h3><span>Double dark choco</span></div>
+      <div class="qty"><button type="button" aria-label="Remove one Double Trouble">−</button><output>0</output><button type="button" aria-label="Add one Double Trouble">+</button></div>
+    </article>
+  </div>
+
+  <!-- ===== UNIQUE CRAVINGS ===== -->
+  <h2 class="category">UNIQUE CRAVINGS</h2>
+  <div class="grid">
+    <article class="cookie" data-name="Red V" data-price="55">
+      <div class="img-slot"><img src="RedVelvet.PNG" alt="Red V cookie"> -->
+        <span>📷 IMAGE SLOT<small>Photo of Red V cookie goes here</small></span></div>
+      <div class="price">₱55</div>
+      <div class="name-tag"><h3>Red V</h3></div>
+      <div class="qty"><button type="button" aria-label="Remove one Red V">−</button><output>0</output><button type="button" aria-label="Add one Red V">+</button></div>
+    </article>
+
+    <article class="cookie" data-name="Matcha Gotcha" data-price="60">
+      <div class="img-slot" ><img src="Matcha.PNG" alt="Matcha Gotcha cookie"> -->
+        <span>📷 IMAGE SLOT<small>Photo of Matcha Gotcha cookie goes here</small></span></div>
+      <div class="price">₱60</div>
+      <div class="name-tag"><h3>Matcha Gotcha</h3></div>
+      <div class="qty"><button type="button" aria-label="Remove one Matcha Gotcha">−</button><output>0</output><button type="button" aria-label="Add one Matcha Gotcha">+</button></div>
+    </article>
+  </div>
+
+  <!-- ===== INDULGENT TREATS ===== -->
+  <h2 class="category">INDULGENT TREATS</h2>
+  <div class="grid">
+    <article class="cookie" data-name="Oatmeal" data-price="60">
+      <div class="img-slot" ><img src="Oatmeal.PNG" alt="Oatmeal cookie"> -->
+        <span>📷 IMAGE SLOT<small>Photo of Oatmeal cookie goes here</small></span></div>
+      <div class="price">₱60</div>
+      <div class="name-tag"><h3>Oatmeal</h3></div>
+      <div class="qty"><button type="button" aria-label="Remove one Oatmeal">−</button><output>0</output><button type="button" aria-label="Add one Oatmeal">+</button></div>
+    </article>
+
+    <article class="cookie" data-name="Hershey" data-price="65">
+      <div class="img-slot" ><img src="Hershey.PNG" alt="Hershey cookie"> -->
+        <span>📷 IMAGE SLOT<small>Photo of Hershey cookie goes here</small></span></div>
+      <div class="price">₱65</div>
+      <div class="name-tag"><h3>Hershey</h3></div>
+      <div class="qty"><button type="button" aria-label="Remove one Hershey">−</button><output>0</output><button type="button" aria-label="Add one Hershey">+</button></div>
+    </article>
+
+    <article class="cookie" data-name="Biscoff" data-price="65">
+      <div class="img-slot" ><img src="Bsicoff.PNG" alt="Biscoff cookie"> -->
+        <span>📷 IMAGE SLOT<small>Photo of Biscoff cookie goes here</small></span></div>
+      <div class="price">₱65</div>
+      <div class="name-tag"><h3>Biscoff</h3></div>
+      <div class="qty"><button type="button" aria-label="Remove one Biscoff">−</button><output>0</output><button type="button" aria-label="Add one Biscoff">+</button></div>
+    </article>
+  </div>
+
+  <!-- ===== ORDER FORM ===== -->
+  <!--
+    SETUP (Formspree):
+    1. Log in at formspree.io and create a new form. Set its email to azrillocsin09@gmail.com.
+    2. Copy the form endpoint (looks like https://formspree.io/f/abcdwxyz).
+    3. Replace YOUR_FORM_ID below with that ID.
+    Orders will be emailed to the address set on your Formspree form.
+  -->
+  <form class="order" id="orderForm" action="https://formspree.io/f/xnpjlgye" method="POST">
+    <h2>Place your order</h2>
+
+    <div>
+      <div class="field">
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="Name" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="contact">Contact number</label>
+        <input type="tel" id="contact" name="Contact Number" autocomplete="tel" inputmode="tel" pattern="[0-9+\s\-]{7,15}" placeholder="09XX XXX XXXX" required>
+      </div>
+      <div class="field">
+        <label for="address">Delivery address</label>
+        <textarea id="address" name="Delivery Address" autocomplete="street-address" placeholder="House no., street, barangay, city" required></textarea>
+        <p class="hint">Delivery is C/O buyer (via Maxim).</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="summary" aria-live="polite">
+        <h3>Your order</h3>
+        <ul id="lines"><li class="empty">No cookies yet. Tap + on a flavor above.</li></ul>
+        <div class="totals">
+          <div><span>Cookies</span><span id="count">0</span></div>
+          <div><span>Subtotal</span><span id="subtotal">₱0</span></div>
+          <div class="discount"><span id="discLabel">Discount</span><span id="discount">−₱0</span></div>
+          <div class="grand"><span>Total</span><span id="total">₱0</span></div>
+        </div>
+        <p class="note">Orders close every <strong>Friday, 7:00 PM</strong>. Pick-up every <strong>Tuesday</strong> (Jaro, Iloilo).</p>
+      </div>
+      <p id="error" role="alert"></p>
+      <button class="submit" type="submit">Send my order</button>
+    </div>
+
+    <!-- Hidden fields filled by JavaScript -->
+    <input type="hidden" name="Order Details" id="f_details">
+    <input type="hidden" name="Total Cookies" id="f_count">
+    <input type="hidden" name="Subtotal" id="f_subtotal">
+    <input type="hidden" name="Discount" id="f_discount">
+    <input type="hidden" name="Total to Pay" id="f_total">
+    <input type="hidden" name="_subject" value="New Dalocs cookie order!">
+    <!-- Optional: after sending, redirect to your own thank-you page once it's on GitHub Pages -->
+    <!-- <input type="hidden" name="_next" value="https://YOUR-USERNAME.github.io/YOUR-REPO/thanks.html"> -->
+  </form>
+
+  <section class="info" aria-label="Ordering information">
+    <div><h3>How to order</h3><p>DM us on Instagram<br><strong>@dalocs</strong></p></div>
+    <div><h3>Pick-up</h3><p>Every <strong>Tuesday</strong><small>Jaro, Iloilo</small></p></div>
+    <div><h3>Delivery</h3><p>C/O <strong>buyer</strong><small>(Maxim)</small></p></div>
+    <div><h3>Order cut-off</h3><p>Every <strong>Friday</strong><small>7:00 PM</small></p></div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var DISCOUNT_PER_4 = 10;
+  var cards = document.querySelectorAll('.cookie');
+  var qtys = new Map();
+  var peso = function (n) { return '₱' + n.toLocaleString('en-PH'); };
+
+  cards.forEach(function (card) {
+    var out = card.querySelector('output');
+    var btns = card.querySelectorAll('button');
+    qtys.set(card, 0);
+    btns[0].addEventListener('click', function () { change(card, out, -1); });
+    btns[1].addEventListener('click', function () { change(card, out, 1); });
+  });
+
+  function change(card, out, d) {
+    var v = Math.max(0, Math.min(99, qtys.get(card) + d));
+    qtys.set(card, v);
+    out.textContent = v;
+    render();
+  }
+
+  function state() {
+    var count = 0, subtotal = 0, lines = [];
+    cards.forEach(function (c) {
+      var q = qtys.get(c);
+      if (q > 0) {
+        var p = Number(c.dataset.price);
+        count += q; subtotal += q * p;
+        lines.push({ name: c.dataset.name, q: q, amt: q * p });
+      }
+    });
+    var sets = Math.floor(count / 4);
+    var discount = sets * DISCOUNT_PER_4;
+    return { count: count, subtotal: subtotal, sets: sets, discount: discount, total: subtotal - discount, lines: lines };
+  }
+
+  function render() {
+    var s = state();
+    var ul = document.getElementById('lines');
+    ul.innerHTML = '';
+    if (!s.lines.length) {
+      ul.innerHTML = '<li class="empty">No cookies yet. Tap + on a flavor above.</li>';
+    } else {
+      s.lines.forEach(function (l) {
+        var li = document.createElement('li');
+        li.innerHTML = '<span></span><span></span>';
+        li.children[0].textContent = l.q + ' × ' + l.name;
+        li.children[1].textContent = peso(l.amt);
+        ul.appendChild(li);
+      });
+    }
+    document.getElementById('count').textContent = s.count;
+    document.getElementById('subtotal').textContent = peso(s.subtotal);
+    document.getElementById('discLabel').textContent = s.sets ? 'Discount (' + s.sets + ' × 4 cookies)' : 'Discount';
+    document.getElementById('discount').textContent = '−' + peso(s.discount);
+    document.getElementById('total').textContent = peso(s.total);
+  }
+
+  document.getElementById('orderForm').addEventListener('submit', function (e) {
+    var s = state(), err = document.getElementById('error');
+    if (!s.count) {
+      e.preventDefault();
+      err.textContent = 'Please add at least one cookie before sending your order.';
+      return;
+    }
+    err.textContent = '';
+    document.getElementById('f_details').value = s.lines.map(function (l) {
+      return l.q + ' x ' + l.name + ' (' + peso(l.amt) + ')';
+    }).join('; ');
+    document.getElementById('f_count').value = s.count;
+    document.getElementById('f_subtotal').value = peso(s.subtotal);
+    document.getElementById('f_discount').value = '-' + peso(s.discount);
+    document.getElementById('f_total').value = peso(s.total);
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
